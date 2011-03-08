@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import redirect
 from django.views.generic.simple import direct_to_template
 
@@ -5,12 +6,14 @@ from db_locale import settings
 from db_locale.models import Translation, TS_NONTRANSLATED, TS_TRANSLATED
 from db_locale.utils import import_translations, export_translations
 
+@staff_member_required
 def language_list(request, template_name="db_locale/language_list.html"):
     return direct_to_template(request, template_name, {
             'default_language': settings.LANGUAGE_CODE,
             'language_list': settings.LANGUAGES,
         })
 
+@staff_member_required
 def translation_list(request, language, status, template_name="db_locale/translation_list.html"):
     if request.method == 'POST':
         for item in request.POST.items():
