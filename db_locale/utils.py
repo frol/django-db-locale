@@ -24,7 +24,7 @@ def import_translations_from_po():
     for language in settings.LANGUAGES:
         if language[0] == settings.LANGUAGE_CODE:
             continue
-        po_file = polib.pofile(os.path.join(settings.PROJECT_ROOT, 'locale',
+        po_file = polib.pofile(os.path.join(settings.LOCALE_ROOT,
             language[0], 'LC_MESSAGES', 'django.po'))
         for entry in po_file:
             Translation.objects.get_or_create(language=language[0],
@@ -35,7 +35,7 @@ def export_translations():
         if language[0] == settings.LANGUAGE_CODE:
             continue
         translation_list = Translation.objects.filter(language=language[0])
-        locale_filename = os.path.join(settings.PROJECT_ROOT, 'locale',
+        locale_filename = os.path.join(settings.LOCALE_ROOT,
             language[0], 'LC_MESSAGES', 'django.po')
         po_file = polib.pofile(locale_filename)
         for translation in translation_list:

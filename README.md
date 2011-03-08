@@ -24,6 +24,8 @@ And you want translate `name`, `content` fields you can add these lines into set
         ('test_app.models.Book', ('name', 'content')),
     )
 
+`LOCALE_ROOT`: (required) specify path with locales. For example, `os.path.join(settings.PROJECT_ROOT, 'locale')`
+
 Installation
 ------------
 
