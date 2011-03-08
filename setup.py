@@ -5,5 +5,6 @@ setup(name="django-db-locale",
     description="Django application to translate strings in database.",
     author="Vladyslav Frolov",
     packages=find_packages(),
+    package_data={'db_locale': ['templates/db_locale/*.html']}
     include_package_data=True,
 )
