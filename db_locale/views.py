@@ -42,10 +42,12 @@ def translation_list(request, language, status, template_name="db_locale/transla
             'translation_list': translation_list
         })
 
+@staff_member_required
 def refresh_request(request):
     import_translations()
     return redirect('db_locale_language_list')
 
+@staff_member_required
 def apply_request(request):
     export_translations()
     return redirect('db_locale_language_list')
