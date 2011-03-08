@@ -6,5 +6,6 @@ setup(name="django-db-locale",
     author="Vladyslav Frolov",
     packages=find_packages(),
     package_data={'db_locale': ['templates/db_locale/*.html']},
+    install_requires=['polib', 'lockfile'],
     include_package_data=True,
 )
