@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load pagination_tags %}
+
+{% block main %}
+    <a href="{% url db_locale_language_list %}">{% trans "All languages" %}</a><br>
+    <a href="{% url db_locale_refresh_request %}">{% trans "Refresh translations" %}</a><br>
+    <a href="{% url db_locale_apply_request %}">{% trans "Apply translations" %}</a><br>
+    {% if status == None %}
+        <a href="{% url db_locale_translation_list language 'nontrans' %}">{% trans "Show non-translated" %}</a>
+    {% else %}
+        <a href="{% url db_locale_translation_list language %}">{% trans "Show all translations" %}</a>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {% autopaginate translation_list %}
+        <table>
+            {% for translation in translation_list %}
+                <tr>
+                    <td>{{ translation.msgid }}</td>
+                    <td><textarea name="msgstr_{{ translation.id }}">{{ translation.msgstr }}</textarea></td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% paginate %}
+        <input type="submit" value="{% trans "Save" %}">
+    </form>
+{% endblock %}
