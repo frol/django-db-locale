@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load pagination_tags %}
 
-{% block main %}
+{% block content %}
     <a href="{% url db_locale_language_list %}">{% trans "All languages" %}</a><br>
     <a href="{% url db_locale_refresh_request %}">{% trans "Refresh translations" %}</a><br>
     <a href="{% url db_locale_apply_request %}">{% trans "Apply translations" %}</a><br>

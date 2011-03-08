@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block main %}
+{% block content %}
     {% for language in language_list %}
         {% if language.0 != default_language %}
             <a href="{% url db_locale_translation_list language.0 %}">{{ language.1 }}</a><br>
