@@ -3,7 +3,7 @@
 import os
 from lockfile import FileLock
 
-from django.conf import settings
+from db_locale import settings
 from django.core.management.base import BaseCommand
 
 from db_locale.utils import import_translations_from_po
