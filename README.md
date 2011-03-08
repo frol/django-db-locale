@@ -20,7 +20,7 @@ If you have the application `test_app` with the following model:
 		
 And you want translate `name`, `content` fields you can add these lines into settings.py:
 
-    DB\_LOCALE\_TRANSLATE\_ITEMS = (
+    DB_LOCALE_TRANSLATE_ITEMS = (
         ('test_app.models.Book', ('name', 'content')),
     )
 
